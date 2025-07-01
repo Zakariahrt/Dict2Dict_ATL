@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dc="http://dictionnaire.cible">
+  <dc:DictionnaireThematique nom="MonDico (Noms Propres)" theme="noms_propres">
+    <entrees nom="Paris" explication="Capitale de la France"/>
+  </dc:DictionnaireThematique>
+  <dc:DictionnaireThematique nom="MonDico (Noms Communs)" theme="noms">
+    <entrees nom="ville" explication="Agglomération urbaine"/>
+    <entrees nom="habitation" explication="Logement" synonyme="/1/@entrees.0"/>
+  </dc:DictionnaireThematique>
+  <dc:DictionnaireThematique nom="MonDico (Verbes)" theme="verbes">
+    <entrees nom="manger" explication="Consommer de la nourriture"/>
+  </dc:DictionnaireThematique>
+  <dc:DictionnaireThematique nom="MonDico (Adjectifs)" theme="adjectifs">
+    <entrees nom="grand" explication="De grande taille"/>
+    <entrees nom="rapide" explication="Qui se déplace vite"/>
+    <entrees nom="vif" explication="Qui se déplace vite" synonyme="/3/@entrees.1"/>
+  </dc:DictionnaireThematique>
+</xmi:XMI>

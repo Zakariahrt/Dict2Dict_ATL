@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage 
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="dictionnaireCible"
+    nsURI="http://dictionnaire.cible"
+    nsPrefix="dc">
+
+    <!-- Classe DictionnaireThematique -->
+    <eClassifiers xsi:type="ecore:EClass" name="DictionnaireThematique">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="theme" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="entrees" upperBound="-1" containment="true" eType="#//Entree"/>
+    </eClassifiers>
+
+    <!-- Classe Entree -->
+    <eClassifiers xsi:type="ecore:EClass" name="Entree">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="explication" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="synonyme" eType="#//Entree"/>
+    </eClassifiers>
+
+</ecore:EPackage>

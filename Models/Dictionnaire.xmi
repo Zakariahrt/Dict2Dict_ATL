@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI 
+    xmlns:xmi="http://www.omg.org/XMI" 
+    xmlns:dic="http://dictionnaire.source">
+
+    <dic:Dictionnaire nom="MonDico" date="2024-01-01" editeur="Exemple">
+
+        <!-- Noms propres -->
+        <nomsPropres nom="Paris" explication="Capitale de la France"/>
+
+        <!-- Mots communs -->
+        <motsCommuns xmi:id="ville" nom="ville" type="nom" genre="F" explication="Agglomération urbaine"/>
+        <motsCommuns nom="habitation" type="nom" genre="F" explication="Logement" synonyme="#ville"/>
+        <motsCommuns nom="manger" type="verbe" genre="M" explication="Consommer de la nourriture"/>
+        <motsCommuns nom="grand" type="adjectif" genre="M" explication="De grande taille"/>
+        <motsCommuns nom="rapidement" type="adverbe" genre="M" explication="Avec vitesse"/>
+		<motsCommuns xmi:id="rapide" nom="rapide" type="adjectif" genre="M" explication="Qui se déplace vite" />
+        <motsCommuns nom="vif" type="adjectif" genre="M" explication="Qui se déplace vite" synonyme="#rapide"/>
+        
+    </dic:Dictionnaire>
+
+</xmi:XMI>

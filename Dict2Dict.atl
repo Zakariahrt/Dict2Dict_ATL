@@ -1,0 +1,63 @@
+module Dict2Dict;
+
+create OUT : dictionnaireCible from IN : dictionnaire;
+
+-- Helper pour résoudre les synonymes (références croisées)
+helper context dictionnaire!MotCommun def: resolveTarget() : dictionnaireCible!Entree =
+    thisModule.resolveTemp(self, 'tgt');
+
+-- Règle principale : Transformer un dictionnaire source en 4 dictionnaires thématiques
+rule DictionnaireToThematiques {
+    from
+        src : dictionnaire!Dictionnaire
+    to
+        dictNP : dictionnaireCible!DictionnaireThematique (
+            nom <- src.nom + ' (Noms Propres)',
+            theme <- 'noms_propres',
+            entrees <- src.nomsPropres
+        ),
+        dictNom : dictionnaireCible!DictionnaireThematique (
+            nom <- src.nom + ' (Noms Communs)',
+            theme <- 'noms',
+            entrees <- src.motsCommuns->select(mc | mc.type = 'nom')
+        ),
+        dictVerbe : dictionnaireCible!DictionnaireThematique (
+            nom <- src.nom + ' (Verbes)',
+            theme <- 'verbes',
+            entrees <- src.motsCommuns->select(mc | mc.type = 'verbe')
+        ),
+        dictAdj : dictionnaireCible!DictionnaireThematique (
+            nom <- src.nom + ' (Adjectifs)',
+            theme <- 'adjectifs',
+            entrees <- src.motsCommuns->select(mc | mc.type = 'adjectif')
+        )
+}
+
+-- Transformation d'un nom propre vers une entrée
+rule NomPropreToEntree {
+    from
+        src : dictionnaire!NomPropre
+    to
+        tgt : dictionnaireCible!Entree (
+            nom <- src.nom,
+            explication <- src.explication
+        )
+}
+
+-- Transformation des mots communs valides (filtrés déjà dans la règle principale)
+rule MotCommunToEntree {
+    from
+        src : dictionnaire!MotCommun (
+            src.type = 'nom' or src.type = 'verbe' or src.type = 'adjectif'
+        )
+    to
+        tgt : dictionnaireCible!Entree (
+            nom <- src.nom,
+            explication <- src.explication,
+            synonyme <- if src.synonyme.oclIsUndefined() then
+                            OclUndefined
+                        else
+                            src.synonyme.resolveTarget()
+                        endif
+        )
+}
